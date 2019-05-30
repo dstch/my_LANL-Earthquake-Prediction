@@ -237,6 +237,10 @@ for seg_id in tqdm_notebook(range(segments)):
     create_features(seg_id, seg, train_X)
     train_y.loc[seg_id, 'time_to_failure'] = seg['time_to_failure'].values[-1]
 
+for seg_id in tqdm_notebook(test_X.index):
+    seg = pd.read_csv('../input/test/' + seg_id + '.csv')
+    create_features(seg_id, seg, test_X)
+
 scaler = StandardScaler()
 scaler.fit(train_X)
 scaled_train_X = pd.DataFrame(scaler.transform(train_X), columns=train_X.columns)
