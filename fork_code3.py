@@ -67,7 +67,7 @@ X_test = pd.DataFrame(columns=X_train.columns, dtype=np.float64, index=submissio
 
 
 for seg_id in X_test.index:
-    seg = pd.read_csv(os.path.join(PATH,'../input/test/') + seg_id + '.csv')
+    seg = pd.read_csv(os.path.join(PATH,'test/') + seg_id + '.csv')
     
     x = seg['acoustic_data'].values
     
