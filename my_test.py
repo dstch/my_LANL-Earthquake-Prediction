@@ -23,7 +23,7 @@ from scipy.signal import hann
 from sklearn.linear_model import LinearRegression
 from catboost import Pool, CatBoostRegressor
 
-PATH = "../input/"
+PATH = "../input/LANL-Earthquake-Prediction"
 os.listdir(PATH)
 
 train_df = pd.read_csv(os.path.join(PATH, 'train.csv'),
@@ -33,7 +33,7 @@ rows = 150000
 segments = int(np.floor(train_df.shape[0] / rows))
 train_X = pd.DataFrame(index=range(segments), dtype=np.float64)
 train_y = pd.DataFrame(index=range(segments), dtype=np.float64, columns=['time_to_failure'])
-submission = pd.read_csv('../input/sample_submission.csv', index_col='seg_id')
+submission = pd.read_csv(os.path.join(PATH,'sample_submission.csv'),index_col='seg_id')
 test_X = pd.DataFrame(columns=train_X.columns, dtype=np.float64, index=submission.index)
 
 n_fold = 5
